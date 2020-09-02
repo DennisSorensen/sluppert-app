@@ -1,32 +1,27 @@
 import 'package:flutter/material.dart';
-import 'testKode.dart';
-import 'package:sluppertapp/SluppertCard.dart';
+import 'package:sluppertapp/models/sluppert_data.dart';
+import 'package:sluppertapp/routes/sluppert_list.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(SluppertApp());
 
 class SluppertApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //testKode();
-    testClasser();
-    enFunktionMedDefaultParameter('Dennis');
-    enFunktionMedDefaultParameter('Dennis', 20);
-    enFunktionMedValgfrieParametre(
-        minAlder: 24,
-        mitNavn: 'Dennis'); //Med valgfrie parametre skan man blande dem
-    enFunktion2(3);
-    enFunktionMedValgfrieParametre(minAlder: 24);
-
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Sluppert App',
-            style: TextStyle(color: Colors.black),
+    //Jeg wrapper yderste app i provideren, og i create laver jeg instans af det data der skal stilles til rådighed
+    return ChangeNotifierProvider<SluppertData>(
+      create: (context) => SluppertData(),
+      child: MaterialApp(
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'Sluppert App',
+              style: TextStyle(color: Colors.black),
+            ),
+            backgroundColor: Colors.white,
           ),
-          backgroundColor: Colors.white,
+          body: SluppertList(),
         ),
-        body: SluppertCard(),
       ),
     );
   }

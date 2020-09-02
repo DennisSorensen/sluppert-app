@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sluppertapp/donald_portrait.dart';
 
 class SluppertCard extends StatelessWidget {
   @override
@@ -27,6 +28,12 @@ class SluppertCard extends StatelessWidget {
                   ),
                   color: Colors.blue,
                   onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DonaldPortrait(),
+                      ),
+                    );
                     print('Hello World');
                   },
                 ),
